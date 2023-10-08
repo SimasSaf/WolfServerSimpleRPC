@@ -9,6 +9,10 @@ public class WolfService : IWolfService
         return wolfLogic.EnterWolfArea(rabbit);
     }
 
+    public int SpawnWaterNearWolf(WaterDesc water)
+    {
+        return wolfLogic.SpawnWaterNearWolf(water);
+    }
 
     public void UpdateRabbitDistanceToWolf(RabbitDesc rabbit)
     {
@@ -18,5 +22,10 @@ public class WolfService : IWolfService
     public bool IsRabbitAlive(RabbitDesc rabbit)
     {
         return wolfLogic.IsRabbitAlive(rabbit);
+    }
+
+    public bool IsWaterAlive(WaterDesc water)
+    {
+        return wolfLogic.IsWaterAlive(water);
     }
 }

@@ -12,6 +12,8 @@ public class WolfState
     public int WolfWeight;
 
     public List<RabbitDesc> RabbitsNearby = new List<RabbitDesc>();
+
+    public List<WaterDesc> WaterNearby = new List<WaterDesc>();
 }
 
 class WolfLogic
@@ -34,15 +36,29 @@ class WolfLogic
 
     public int EnterWolfArea(RabbitDesc rabbit)
     {
+        mLog.Info("A Rabbit has entered the Wolf area");
+
         lock(wolfState.AccessLock)
         {
             wolfState.LastUniqueID += 1;
-
             rabbit.RabbitID = wolfState.LastUniqueID;
-
             wolfState.RabbitsNearby.Add(rabbit);
 
             return rabbit.RabbitID;
+        }
+    }
+
+    public int SpawnWaterNearWolf(WaterDesc water)
+    {
+        mLog.Info("~~~ Spawning Water near Wolf ~~~");
+
+        lock(wolfState.AccessLock)
+        {
+            wolfState.LastUniqueID += 1;
+            water.WaterID = wolfState.LastUniqueID;
+            wolfState.WaterNearby.Add(water);
+
+            return water.WaterID;
         }
     }
 
@@ -68,13 +84,21 @@ class WolfLogic
         }
     }
 
+    public bool IsWaterAlive(WaterDesc water)
+    {
+        lock(wolfState.AccessLock)
+        {
+            return wolfState.WaterNearby.Any(waterNearby => waterNearby.WaterID == water.WaterID);
+        }
+    }
+
     private void BackgroundTask()
     {
         while(true)
         {
             lock(wolfState.AccessLock)
             {
-                mLog.Info($"The wolf {wolfState.WolfWeight} is moving...");
+                mLog.Info($"The wolf ({wolfState.WolfWeight}) is moving...");
 
                 GenerateRandomWolfCoordinates();
                 
@@ -83,43 +107,75 @@ class WolfLogic
                 //This is just to not spam, let's imagine its doing calculations :D
                 Thread.Sleep(1000);
 
-  
-                
-                List<RabbitDesc> newRabbitsNearby = wolfState.RabbitsNearby;
+                CheckRabbitsNearby();
 
-                for (int i = newRabbitsNearby.Count - 1; i >= 0; i--)
-                {
-                    mLog.Info("Wolf is sniffing out the rabbits...");
-
-                    var rabbit = wolfState.RabbitsNearby[i];
-                    mLog.Info("Rabbit distance: " + rabbit.DistanceToWolf);
-
-                    if (rabbit.DistanceToWolf <= 30)
-                    {
-                        mLog.Info("Rabbit distance: " + rabbit.DistanceToWolf);
-
-                        EatRabbit(rabbit);
-                    }
-                    
-                    if (wolfState.WolfWeight >= WOLF_MAX_WEIGHT)
-                    {
-                        WOLF_IS_FULL = true;
-                        break;
-                    }
-                }
+                CheckWaterNearby();
             };
 
             if (WOLF_IS_FULL)
             {
                 lock(wolfState.AccessLock)
                 {
-                    mLog.Info("Wolf is Full");
+                    mLog.Info("!!! Wolf is Full");
                     wolfState.WolfWeight = 0;
                 }
 
-                WOLF_IS_FULL = false;
-                
                 Thread.Sleep(5000);
+                WOLF_IS_FULL = false;
+                mLog.Info("!!! Wolf is no longer Full");
+            }
+        }
+    }
+
+    private void CheckRabbitsNearby()
+    {
+        List<RabbitDesc> newRabbitsNearby = wolfState.RabbitsNearby;
+
+        for (int i = newRabbitsNearby.Count - 1; i >= 0; i--)
+        {
+            if (wolfState.WolfWeight < WOLF_MAX_WEIGHT)
+            {
+                mLog.Info("Wolf is sniffing out the rabbits...");
+
+                var rabbit = wolfState.RabbitsNearby[i];
+                mLog.Info("Rabbit distance: " + rabbit.DistanceToWolf);
+
+                if (rabbit.DistanceToWolf <= 30)
+                {
+                    mLog.Info("Rabbit distance: " + rabbit.DistanceToWolf);
+
+                    EatRabbit(rabbit);
+                }
+            }
+            else
+            {
+                WOLF_IS_FULL = true;
+                break;
+            }
+        }
+    }
+
+        private void CheckWaterNearby()
+    {
+        List<WaterDesc> newWaterNearby = wolfState.WaterNearby;
+
+        for (int i = newWaterNearby.Count - 1; i >= 0; i--)
+        {
+            if (wolfState.WolfWeight < WOLF_MAX_WEIGHT)
+            {
+                mLog.Info("Wolf is looking for Water...");
+
+                var water = wolfState.WaterNearby[i];
+
+                if (Math.Abs(wolfState.x - water.x) <= 5 || Math.Abs(wolfState.y - water.y) <= 5)
+                {
+                    DrinkWater(water);
+                }
+            }
+            else
+            {
+                WOLF_IS_FULL = true;
+                break;
             }
         }
     }
@@ -131,10 +187,17 @@ class WolfLogic
         wolfState.RabbitsNearby.Remove(rabbit);
     }
 
+    private void DrinkWater(WaterDesc water)
+    {
+        mLog.Info("Drinking water...");
+        wolfState.WolfWeight += water.Volume;
+        wolfState.WaterNearby.Remove(water);
+    }
+
     private void GenerateRandomWolfCoordinates()
     {
-        wolfState.x = rng.Next(-100, 100);
-        wolfState.y = rng.Next(-100, 100);
+        wolfState.x = rng.Next(-50, 50);
+        wolfState.y = rng.Next(-50, 50);
     }
 }
 

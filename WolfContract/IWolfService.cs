@@ -11,11 +11,24 @@ public class RabbitDesc
 	public bool isRabbitAlive { get; set; }
 }
 
+public class WaterDesc
+{
+	public int WaterID { get; set; }
+	public int Volume { get; set; }
+
+	public int x { get; set; }
+	public int y { get; set; }
+}
+
 public interface IWolfService
 {
 	int EnterWolfArea(RabbitDesc rabbit);
 
+	int SpawnWaterNearWolf(WaterDesc water);
+
 	void UpdateRabbitDistanceToWolf(RabbitDesc rabbit);
 
 	bool IsRabbitAlive(RabbitDesc rabbit);
+
+	bool IsWaterAlive(WaterDesc water);
 }

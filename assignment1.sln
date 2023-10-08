@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wolf", "Wolf\Wolf.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WolfContract", "WolfContract\WolfContract.csproj", "{5EB2EA67-E331-436C-BB2A-4F25FBEDE686}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Water", "Water\Water.csproj", "{99AB8A45-AE58-4860-A7DB-DA96BC37416E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5EB2EA67-E331-436C-BB2A-4F25FBEDE686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EB2EA67-E331-436C-BB2A-4F25FBEDE686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EB2EA67-E331-436C-BB2A-4F25FBEDE686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99AB8A45-AE58-4860-A7DB-DA96BC37416E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99AB8A45-AE58-4860-A7DB-DA96BC37416E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99AB8A45-AE58-4860-A7DB-DA96BC37416E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99AB8A45-AE58-4860-A7DB-DA96BC37416E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

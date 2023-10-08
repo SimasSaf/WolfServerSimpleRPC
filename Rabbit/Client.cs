@@ -38,7 +38,7 @@ class Client
             try
             {
 				var sc = new ServiceCollection();
-                				sc
+                	sc
 					.AddSimpleRpcClient(
 						"wolfService",
 						new HttpClientTransportOptions
@@ -77,7 +77,7 @@ class Client
             }
             catch(Exception err)
             {
-                mLog.Info("Error has occured...", err);
+                mLog.Error("Error has occured...", err);
                 Thread.Sleep(3000);
             }
         }
