@@ -362,6 +362,19 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
+      "NLog/5.2.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "RandomNameGeneratorLibrary/1.2.2": {
         "type": "package",
         "dependencies": {
@@ -2240,6 +2253,30 @@
         "dotnet_library_license.txt",
         "netstandard.library.1.6.1.nupkg.sha512",
         "netstandard.library.nuspec"
+      ]
+    },
+    "NLog/5.2.4": {
+      "sha512": "/qzds1Cp9rQD53La3mlWOmCHsFSbmT9BCb8q6k3eOrbOYDfdf3ZN1hBW7IDImUD6V8BfPfEFBhXGDLOEOQxHgQ==",
+      "type": "package",
+      "path": "nlog/5.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/net46/NLog.dll",
+        "lib/net46/NLog.xml",
+        "lib/netstandard1.3/NLog.dll",
+        "lib/netstandard1.3/NLog.xml",
+        "lib/netstandard1.5/NLog.dll",
+        "lib/netstandard1.5/NLog.xml",
+        "lib/netstandard2.0/NLog.dll",
+        "lib/netstandard2.0/NLog.xml",
+        "nlog.5.2.4.nupkg.sha512",
+        "nlog.nuspec"
       ]
     },
     "RandomNameGeneratorLibrary/1.2.2": {
@@ -5916,6 +5953,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
+      "NLog >= 5.2.4",
       "RandomNameGeneratorLibrary >= 1.2.2",
       "SimpleRpc >= 1.0.0-beta1",
       "SimpleRpc.Serialization.Hyperion >= 1.0.0-beta1",
@@ -5928,11 +5966,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\assignment1\\Rabbit\\Rabbit.csproj",
+      "projectUniqueName": "C:\\assignment1\\Rabbit\\Rabbit.csproj",
       "projectName": "Rabbit",
-      "projectPath": "c:\\assignment1\\Rabbit\\Rabbit.csproj",
+      "projectPath": "C:\\assignment1\\Rabbit\\Rabbit.csproj",
       "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "c:\\assignment1\\Rabbit\\obj\\",
+      "outputPath": "C:\\assignment1\\Rabbit\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -5947,8 +5985,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "c:\\assignment1\\WolfContract\\WolfContract.csproj": {
-              "projectPath": "c:\\assignment1\\WolfContract\\WolfContract.csproj"
+            "C:\\assignment1\\WolfContract\\WolfContract.csproj": {
+              "projectPath": "C:\\assignment1\\WolfContract\\WolfContract.csproj"
             }
           }
         }
@@ -5966,6 +6004,10 @@
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[7.0.0, )"
+          },
+          "NLog": {
+            "target": "Package",
+            "version": "[5.2.4, )"
           },
           "RandomNameGeneratorLibrary": {
             "target": "Package",

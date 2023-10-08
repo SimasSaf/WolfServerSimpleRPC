@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="NLog" Version="5.2.4" />
     <PackageReference Include="RandomNameGeneratorLibrary" Version="1.2.2" />
     <PackageReference Include="SimpleRpc" Version="1.0.0-beta1" />
     <PackageReference Include="SimpleRpc.Serialization.Hyperion" Version="1.0.0-beta1" />

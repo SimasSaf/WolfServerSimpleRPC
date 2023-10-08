@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aTGIRBGwSwzrV/jsT7v68y/VRrq3qtkm2XxanQEDWX0/Hz2xue5/7zWxZOx3IGOrncjZqUsGsxpI4LR+FDiPnQ==",
+  "dgSpecHash": "bqfMg11uKYAP6saj8Ao7+pbfPmImE8G44IvGMOFPxkwC4rOvzDGLoleIjjoAsFjc6gISnxj1gP4Uzb6U0mxn9w==",
   "success": true,
-  "projectFilePath": "c:\\assignment1\\Wolf\\Wolf.csproj",
+  "projectFilePath": "C:\\assignment1\\Wolf\\Wolf.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pc\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\ceras\\4.1.7\\ceras.4.1.7.nupkg.sha512",
@@ -24,6 +24,7 @@
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
+    "C:\\Users\\Pc\\.nuget\\packages\\nlog\\5.2.4\\nlog.5.2.4.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Pc\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

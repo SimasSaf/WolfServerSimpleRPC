@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\assignment1\\Wolf\\Wolf.csproj": {}
+    "C:\\assignment1\\Wolf\\Wolf.csproj": {}
   },
   "projects": {
-    "c:\\assignment1\\WolfContract\\WolfContract.csproj": {
+    "C:\\assignment1\\WolfContract\\WolfContract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\assignment1\\WolfContract\\WolfContract.csproj",
+        "projectUniqueName": "C:\\assignment1\\WolfContract\\WolfContract.csproj",
         "projectName": "WolfContract",
-        "projectPath": "c:\\assignment1\\WolfContract\\WolfContract.csproj",
+        "projectPath": "C:\\assignment1\\WolfContract\\WolfContract.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "c:\\assignment1\\WolfContract\\obj\\",
+        "outputPath": "C:\\assignment1\\WolfContract\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -57,14 +57,14 @@
         }
       }
     },
-    "c:\\assignment1\\Wolf\\Wolf.csproj": {
+    "C:\\assignment1\\Wolf\\Wolf.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\assignment1\\Wolf\\Wolf.csproj",
+        "projectUniqueName": "C:\\assignment1\\Wolf\\Wolf.csproj",
         "projectName": "Wolf",
-        "projectPath": "c:\\assignment1\\Wolf\\Wolf.csproj",
+        "projectPath": "C:\\assignment1\\Wolf\\Wolf.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "c:\\assignment1\\Wolf\\obj\\",
+        "outputPath": "C:\\assignment1\\Wolf\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -79,8 +79,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\assignment1\\WolfContract\\WolfContract.csproj": {
-                "projectPath": "c:\\assignment1\\WolfContract\\WolfContract.csproj"
+              "C:\\assignment1\\WolfContract\\WolfContract.csproj": {
+                "projectPath": "C:\\assignment1\\WolfContract\\WolfContract.csproj"
               }
             }
           }
@@ -95,6 +95,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "NLog": {
+              "target": "Package",
+              "version": "[5.2.4, )"
+            },
             "SimpleRpc": {
               "target": "Package",
               "version": "[1.0.0-beta1, )"

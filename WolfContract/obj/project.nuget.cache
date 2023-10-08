@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "udD7Rkr3hMIAcD8zVS1WSpEHKDcNHlpqMnBYVIOipzQnaYKJQ6H+4NkjuKw84Dt7UUhBt3OLzTbcon7I5cgVGg==",
+  "dgSpecHash": "NOmW60oDCco6tOa9H5DFhZ478d8KPGM7x9jhhKn3bo/lMNkX3TjeSWN1cILaYZp4+HZZwsKNpuSUeAd1563ttw==",
   "success": true,
-  "projectFilePath": "c:\\assignment1\\WolfContract\\WolfContract.csproj",
+  "projectFilePath": "C:\\assignment1\\WolfContract\\WolfContract.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

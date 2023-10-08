@@ -35,3 +35,4 @@ c:\assignment1\Rabbit\obj\Debug\net7.0\refint\Rabbit.dll
 c:\assignment1\Rabbit\obj\Debug\net7.0\Rabbit.pdb
 c:\assignment1\Rabbit\obj\Debug\net7.0\Rabbit.genruntimeconfig.cache
 c:\assignment1\Rabbit\obj\Debug\net7.0\ref\Rabbit.dll
+C:\assignment1\Rabbit\bin\Debug\net7.0\NLog.dll

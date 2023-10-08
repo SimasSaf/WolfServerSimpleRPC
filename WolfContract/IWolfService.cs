@@ -15,5 +15,7 @@ public interface IWolfService
 {
 	int EnterWolfArea(RabbitDesc rabbit);
 
-	bool isRabbitEaten(int rabbitID);
+	void UpdateRabbitDistanceToWolf(RabbitDesc rabbit);
+
+	bool IsRabbitAlive(RabbitDesc rabbit);
 }

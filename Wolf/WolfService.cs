@@ -9,8 +9,14 @@ public class WolfService : IWolfService
         return wolfLogic.EnterWolfArea(rabbit);
     }
 
-    public bool isRabbitEaten(int rabbitID)
+
+    public void UpdateRabbitDistanceToWolf(RabbitDesc rabbit)
     {
-        return wolfLogic.IsRabbitEaten(rabbitID);
+        wolfLogic.UpdateRabbitDistanceToWolf(rabbit);
+    }
+
+    public bool IsRabbitAlive(RabbitDesc rabbit)
+    {
+        return wolfLogic.IsRabbitAlive(rabbit);
     }
 }

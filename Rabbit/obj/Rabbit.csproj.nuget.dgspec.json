@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\assignment1\\Rabbit\\Rabbit.csproj": {}
+    "C:\\assignment1\\Rabbit\\Rabbit.csproj": {}
   },
   "projects": {
-    "c:\\assignment1\\Rabbit\\Rabbit.csproj": {
+    "C:\\assignment1\\Rabbit\\Rabbit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\assignment1\\Rabbit\\Rabbit.csproj",
+        "projectUniqueName": "C:\\assignment1\\Rabbit\\Rabbit.csproj",
         "projectName": "Rabbit",
-        "projectPath": "c:\\assignment1\\Rabbit\\Rabbit.csproj",
+        "projectPath": "C:\\assignment1\\Rabbit\\Rabbit.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "c:\\assignment1\\Rabbit\\obj\\",
+        "outputPath": "C:\\assignment1\\Rabbit\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\assignment1\\WolfContract\\WolfContract.csproj": {
-                "projectPath": "c:\\assignment1\\WolfContract\\WolfContract.csproj"
+              "C:\\assignment1\\WolfContract\\WolfContract.csproj": {
+                "projectPath": "C:\\assignment1\\WolfContract\\WolfContract.csproj"
               }
             }
           }
@@ -45,6 +45,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.2.4, )"
             },
             "RandomNameGeneratorLibrary": {
               "target": "Package",
@@ -79,14 +83,14 @@
         }
       }
     },
-    "c:\\assignment1\\WolfContract\\WolfContract.csproj": {
+    "C:\\assignment1\\WolfContract\\WolfContract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\assignment1\\WolfContract\\WolfContract.csproj",
+        "projectUniqueName": "C:\\assignment1\\WolfContract\\WolfContract.csproj",
         "projectName": "WolfContract",
-        "projectPath": "c:\\assignment1\\WolfContract\\WolfContract.csproj",
+        "projectPath": "C:\\assignment1\\WolfContract\\WolfContract.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "c:\\assignment1\\WolfContract\\obj\\",
+        "outputPath": "C:\\assignment1\\WolfContract\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"

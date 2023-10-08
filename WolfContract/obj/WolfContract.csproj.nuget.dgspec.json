@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\assignment1\\WolfContract\\WolfContract.csproj": {}
+    "C:\\assignment1\\WolfContract\\WolfContract.csproj": {}
   },
   "projects": {
-    "c:\\assignment1\\WolfContract\\WolfContract.csproj": {
+    "C:\\assignment1\\WolfContract\\WolfContract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\assignment1\\WolfContract\\WolfContract.csproj",
+        "projectUniqueName": "C:\\assignment1\\WolfContract\\WolfContract.csproj",
         "projectName": "WolfContract",
-        "projectPath": "c:\\assignment1\\WolfContract\\WolfContract.csproj",
+        "projectPath": "C:\\assignment1\\WolfContract\\WolfContract.csproj",
         "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-        "outputPath": "c:\\assignment1\\WolfContract\\obj\\",
+        "outputPath": "C:\\assignment1\\WolfContract\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config"

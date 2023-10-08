@@ -1,5 +1,5 @@
 using Services;
-
+using NLog;
 public class WolfState
 {
     public readonly object AccessLock = new object();
@@ -16,8 +16,11 @@ public class WolfState
 
 class WolfLogic
 {
-    static readonly int WOLF_IS_FULL = 30;
+    static readonly int WOLF_MAX_WEIGHT = 30;
+    static bool WOLF_IS_FULL = false;
     private Thread backgroundTaskThread;
+
+    private Logger mLog = LogManager.GetCurrentClassLogger();
 
     private WolfState wolfState = new WolfState();
 
@@ -26,18 +29,7 @@ class WolfLogic
     public WolfLogic()
     {
         backgroundTaskThread = new Thread(BackgroundTask);
-    }
-
-    public bool IsRabbitEaten(int rabbitID)
-    {
-        lock(wolfState.AccessLock)
-        {
-            if(wolfState.RabbitsNearby.Exists(rabbit => rabbit.RabbitID == rabbitID))
-            {
-                return true;
-            }
-            else return false;
-        }
+        backgroundTaskThread.Start();
     }
 
     public int EnterWolfArea(RabbitDesc rabbit)
@@ -54,44 +46,88 @@ class WolfLogic
         }
     }
 
+    public void UpdateRabbitDistanceToWolf(RabbitDesc rabbit)
+    {
+        lock(wolfState.AccessLock)
+        {
+                mLog.Info("Updating rabbit distance " + rabbit.DistanceToWolf);
+                var rabbitNearby = wolfState.RabbitsNearby.Find(rabbitNearby => rabbitNearby.RabbitID.Equals(rabbit.RabbitID));
+
+                if(rabbitNearby != null)
+                {
+                    rabbitNearby.DistanceToWolf = rabbit.DistanceToWolf;
+                }
+        }
+    }
+
+    public bool IsRabbitAlive(RabbitDesc rabbit)
+    {
+        lock(wolfState.AccessLock)
+        {
+            return wolfState.RabbitsNearby.Any(rabbitNearby => rabbitNearby.RabbitID == rabbit.RabbitID);
+        }
+    }
+
     private void BackgroundTask()
     {
         while(true)
         {
             lock(wolfState.AccessLock)
             {
-                Console.WriteLine("The wolf is moving...");
+                mLog.Info($"The wolf {wolfState.WolfWeight} is moving...");
 
                 GenerateRandomWolfCoordinates();
                 
-                Console.WriteLine($"The Wolf is currently at [{wolfState.x},{wolfState.y}]");
-
+                mLog.Info($"The Wolf is currently at [{wolfState.x},{wolfState.y}]");
+                
+                //This is just to not spam, let's imagine its doing calculations :D
                 Thread.Sleep(1000);
 
-                Console.WriteLine("Wolf is sniffing out the rabbits...");
+  
+                
+                List<RabbitDesc> newRabbitsNearby = wolfState.RabbitsNearby;
 
-                wolfState.RabbitsNearby.ForEach( rabbit => 
+                for (int i = newRabbitsNearby.Count - 1; i >= 0; i--)
                 {
-                    if(rabbit.DistanceToWolf <= 3)
+                    mLog.Info("Wolf is sniffing out the rabbits...");
+
+                    var rabbit = wolfState.RabbitsNearby[i];
+                    mLog.Info("Rabbit distance: " + rabbit.DistanceToWolf);
+
+                    if (rabbit.DistanceToWolf <= 30)
                     {
+                        mLog.Info("Rabbit distance: " + rabbit.DistanceToWolf);
+
                         EatRabbit(rabbit);
                     }
                     
-                    if(wolfState.WolfWeight >= WOLF_IS_FULL)
+                    if (wolfState.WolfWeight >= WOLF_MAX_WEIGHT)
                     {
-                        wolfState.WolfWeight = 0;
-                        Thread.Sleep(5000); //?? Is this Okay?
+                        WOLF_IS_FULL = true;
+                        break;
                     }
-                });
+                }
             };
+
+            if (WOLF_IS_FULL)
+            {
+                lock(wolfState.AccessLock)
+                {
+                    mLog.Info("Wolf is Full");
+                    wolfState.WolfWeight = 0;
+                }
+
+                WOLF_IS_FULL = false;
+                
+                Thread.Sleep(5000);
+            }
         }
     }
 
     private void EatRabbit(RabbitDesc rabbit)
     {
-        Console.WriteLine($"Eating {rabbit.RabbitName} The Rabbit");
+        mLog.Info($"Eating {rabbit.RabbitName} The Rabbit");
         wolfState.WolfWeight += rabbit.Weight;
-        
         wolfState.RabbitsNearby.Remove(rabbit);
     }
 

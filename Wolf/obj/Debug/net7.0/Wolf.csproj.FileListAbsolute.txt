@@ -31,3 +31,5 @@ c:\assignment1\Wolf\obj\Debug\net7.0\refint\Wolf.dll
 c:\assignment1\Wolf\obj\Debug\net7.0\Wolf.pdb
 c:\assignment1\Wolf\obj\Debug\net7.0\Wolf.genruntimeconfig.cache
 c:\assignment1\Wolf\obj\Debug\net7.0\ref\Wolf.dll
+C:\assignment1\Wolf\bin\Debug\net7.0\NLog.dll
+C:\assignment1\Wolf\bin\Debug\net7.0\appsettings.json

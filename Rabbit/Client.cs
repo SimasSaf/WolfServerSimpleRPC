@@ -4,17 +4,34 @@ using Services;
 using SimpleRpc.Serialization.Hyperion;
 using SimpleRpc.Transports;
 using SimpleRpc.Transports.Http.Client;
+using NLog;
 
 
 class Client
 {
     private readonly RabbitDesc rabbit = new RabbitDesc();
     private readonly Random rng = new Random();
-    
+
+    Logger mLog = LogManager.GetCurrentClassLogger();
+
+	private void ConfigureLogging()
+	{
+		var config = new NLog.Config.LoggingConfiguration();
+
+		var console =
+			new NLog.Targets.ConsoleTarget("console")
+			{
+				Layout = @"${date:format=HH\:mm\:ss}|${level}| ${message} ${exception}"
+			};
+		config.AddTarget(console);
+		config.AddRuleForAllLevels(console);
+
+		LogManager.Configuration = config;
+	}
 
     private void Run() 
     {
-        var rnd = new Random();
+        ConfigureLogging();
 
         while(true)
         {
@@ -37,28 +54,30 @@ class Client
                 var sp = sc.BuildServiceProvider();
                 var wolf = sp.GetService<IWolfService>();
  
-                InitializeRabbit(wolf);
+                if(wolf != null)
+                {
+                    InitializeRabbit(wolf);
+                }
 
                 while(true)
                 {
-                    while(rabbit.isRabbitAlive)
+                    mLog.Info(wolf.IsRabbitAlive(rabbit));
+                    while(wolf.IsRabbitAlive(rabbit))
                     {
                         rabbit.DistanceToWolf = rng.Next(1, 100);
-                        Console.WriteLine($"The Rabbit is {rabbit.DistanceToWolf}m away");
+                        wolf.UpdateRabbitDistanceToWolf(rabbit);
+                        mLog.Info($"The Rabbit is {rabbit.DistanceToWolf}m away");
                         Thread.Sleep(3000);
-
-                        if(wolf.isRabbitEaten(rabbit.RabbitID))
-                        {
-                            Console.WriteLine("Rabbit has died RIP");
-                            Thread.Sleep(5000);
-                            InitializeRabbit(wolf);
-                        }
                     }
+
+                    mLog.Info("Rabbit has died RIP");
+                    Thread.Sleep(5000);
+                    InitializeRabbit(wolf);
                 }
             }
             catch(Exception err)
             {
-                Console.WriteLine("Error has occured...", err);
+                mLog.Info("Error has occured...", err);
                 Thread.Sleep(3000);
             }
         }
@@ -76,8 +95,12 @@ class Client
 
         rabbit.RabbitName = personGenerator.GenerateRandomFirstAndLastName();
         rabbit.Weight = rng.Next(0, 10);
+        rabbit.isRabbitAlive = true;
+        rabbit.DistanceToWolf = 1000;
         rabbit.RabbitID = wolf.EnterWolfArea(rabbit);
-        
-        Console.WriteLine($"{rabbit.RabbitName} ({rabbit.Weight}) the Rabbit is born! #{rabbit.RabbitID}");
+
+        mLog.Info($"{rabbit.RabbitName} ({rabbit.Weight}) the Rabbit is born! #{rabbit.RabbitID}");
     }
+
+    
 }
